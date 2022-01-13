@@ -74,7 +74,6 @@ class MqttComm(Thread):
                 #self._connection.publish("1R1","{ \"dest\":" + str( self._unitID) + " }")
         except Exception as ex:
             print("Exception : " + str(ex))
-
         #self._connection.disconnect()
 
 

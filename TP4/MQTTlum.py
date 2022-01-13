@@ -80,7 +80,7 @@ class Luminosity(MqttComm):
             print("connexion failed %s " %(mqtt.error_string(rc)))
         self._connected = True
         self._connection.subscribe(MQTT_TOPICS)
-        do_every(self._frequence,publishSensors)
+        self.do_every(self._frequence,self.publishSensors)
     # The callback for a received message from the server.
 
     def on_message(self,client, userdata, msg):
@@ -120,7 +120,7 @@ class Luminosity(MqttComm):
         print('LUX:'+lum)
         client.publish(MQTT_PUB, json.dumps(jsonFrame), MQTT_QOS)
 
-    def lumiere(self):
+    def lumiere():
         bus = smbus.SMBus(1)
         bus.write_byte_data(0x39, 0x00 | 0x80, 0x03)
         bus.write_byte_data(0x39, 0x01 | 0x80, 0x02)
