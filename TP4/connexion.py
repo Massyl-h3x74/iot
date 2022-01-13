@@ -41,17 +41,10 @@ class MqttComm(Thread):
     def __init__(self):
         ''' Initialize object '''
         super().__init__()
-        self._unitID = unitID
         self._mqtt_user = "azerty"
         self._mqtt_server = "192.168.0.210"
         self._mqtt_port = 1883
         self._mqtt_passwd = "azerty"
-        self._mqtt_topics = mqtt_topics
-        self._addons        = kwargs
-
-        if( self._shutdownEvent is None ):
-            print("unspecified global shutdown ... thus locally specified ...")
-            #self._shutdownEvent = Event()
 
         # setup MQTT connection
         self._connection = mqtt.Client()
