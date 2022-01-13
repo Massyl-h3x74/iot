@@ -40,7 +40,7 @@ client      = None
 timer       = None
 log         = None
 __shutdown  = False
-
+MQTT_TOPICS     =  ["1R1/014/shutter" ,"1R1/014/shutter/command" ]
 
 
 # #############################################################################
@@ -50,7 +50,7 @@ __shutdown  = False
 
 class Luminosity(MqttComm):
     def __init__(self):
-        super().__init__(str(getmac()))
+        super().__init__(self,str(getmac()),MQTT_TOPICS)
         threading.Thread.__init__(self)
         self._frequence = measure_interleave
         self._unitId = str(getmac())

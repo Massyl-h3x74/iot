@@ -19,7 +19,7 @@ MQTT_USER       = 'azerty'
 MQTT_PASSWD     = 'azerty'
 
 # input topics
-MQTT_TOPICS     =  "1R1/014/shutter/command"       # legacy stuff
+MQTT_TOPICS     =  ["1R1/014/shutter" ,"1R1/014/shutter/command" ]      # legacy stuff
 #MQTT_TOPICS     = [ "#" ]           # allowed to subscribe to all ... but carefull filters required ;)
 
 
