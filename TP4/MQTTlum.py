@@ -66,7 +66,7 @@ class Luminosity(MqttComm):
     #
     def run(self):
         self._connection.connect(self._mqtt_server ,self._mqtt_port)
-        print("Connected to server %s on port %s" % (MQTT_SERVER, MQTT_PORT))
+        print("Connected to server %s on port %s" % (self._mqtt_server, self._mqtt_port))
         counter = 0
         #self._connection.subscribe(self._mqtt_topics)
         try:
