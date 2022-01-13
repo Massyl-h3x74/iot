@@ -30,6 +30,8 @@ class MqttComm(Thread):
     _connection     = None  # mqtt client
     _connected      = False
     _mqtt_user      = None
+    _mqtt_server      = None
+    _mqtt_port      = None
     _mqtt_passwd    = None
     _mqtt_topics    = None  # list of topics to subscribe to
     _unitID         = None
@@ -42,6 +44,10 @@ class MqttComm(Thread):
         super().__init__()
 
         self._unitID = unitID
+        self._mqtt_user = MQTT_USER
+        self._mqtt_server = MQTT_SERVER
+        self._mqtt_port = MQTT_PORT
+        self._mqtt_passwd = MQTT_PASSWD
         self._mqtt_topics = mqtt_topics
         self._addons        = kwargs
 
@@ -50,7 +56,7 @@ class MqttComm(Thread):
             #self._shutdownEvent = Event()
 
         # setup MQTT connection
-        self._connection = mqtt.Client()
+        self._connection = mqtt.Client(unitID)
         self._connection.on_connect = self.on_connect
         self._connection.on_disconnect = self.on_disconnect
         self._connection.on_subscribe = self.on_subscribe

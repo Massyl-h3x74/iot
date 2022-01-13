@@ -54,16 +54,11 @@ class Luminosity(MqttComm):
         self._frequence = measure_interleave
         self._unitId = str(getmac())
         self._lux = 0
-        self._connection = mqtt.Client()
         self._connection.on_connect = self.on_connect
         self._connection.on_disconnect = self.on_disconnect
         self._connection.on_subscribe = self.on_subscribe
         self._connection.on_publish = self.on_publish
         self._connection.on_message = self.on_message
-        if len(MQTT_USER)!=0 and len(MQTT_PASSWD)!=0:
-            client.username_pw_set(MQTT_USER,MQTT_PASSWD); # set username / password
-    #
-
     #
     # threading.timer helper function
     def do_every (interval, worker_func, iterations = 0):

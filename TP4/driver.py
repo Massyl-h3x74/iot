@@ -1,4 +1,7 @@
 
+import os
+import sys
+import signal
 import logging
 from MQTTlum import Luminosity
 
