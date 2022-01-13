@@ -32,7 +32,7 @@ def driver():
 
     signal.signal(signal.SIGINT, ctrlc_handler)
 
-    lum = Luminosity()
+    lum = Luminosity('LUX1')
     lum.start()
 
 
