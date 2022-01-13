@@ -99,11 +99,6 @@ class MqttComm(Thread):
         print("mqtt comm handle message")
         pass
 
-
-    def do_every(interval, function):
-        pass
-
-
     def on_message(self,client,userdata,message):
         try:
             payload = json.loads(message.payload.decode('utf-8'))
