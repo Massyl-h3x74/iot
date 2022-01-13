@@ -67,12 +67,11 @@ class MqttComm(Thread):
         counter = 0
         #self._connection.subscribe(self._mqtt_topics)
         try:
-            while counter == 100:
+            while 1:
                 if self._connection.loop(timeout=2.0) != mqtt.MQTT_ERR_SUCCESS:
                     print("loop failed, sleeping a bit before retrying")
                     time.sleep(2)
                 #self._connection.publish("1R1","{ \"dest\":" + str( self._unitID) + " }")
-                counter = counter + 1
         except Exception as ex:
             print("Exception : " + str(ex))
 
