@@ -32,7 +32,7 @@ if (os.path.exists(_path2add) and not os.path.abspath(_path2add) in sys.path):
 # Raspberry Pi related imports
 from rpi_utils import *
 '''
-from libutils.rpi_utils import getmac
+from rpi_utils import getmac
 
 
 
