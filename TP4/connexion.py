@@ -69,7 +69,7 @@ class MqttComm(Thread):
 
 
     def run(self):
-        self._connection.connect(self._mqtt_server,self._mqtt_port)
+        self._connection.connect(self._mqtt_server ,self._mqtt_port)
         print("Connected to server %s on port %s" % (MQTT_SERVER, MQTT_PORT))
         counter = 0
         #self._connection.subscribe(self._mqtt_topics)
@@ -83,7 +83,7 @@ class MqttComm(Thread):
         except Exception as ex:
             print("Exception : " + str(ex))
 
-        self._connection.disconnect()
+        #self._connection.disconnect()
 
 
     def on_disconnect(self,client,userdata,rc):
