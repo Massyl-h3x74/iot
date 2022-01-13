@@ -50,6 +50,7 @@ __shutdown  = False
 
 class Luminosity(MqttComm):
     def __init__(self):
+        super().__init__(str(getmac()))
         threading.Thread.__init__(self)
         self._frequence = measure_interleave
         self._unitId = str(getmac())
@@ -72,10 +73,8 @@ class Luminosity(MqttComm):
         # launch worker function
         worker_func();
 
-
     # --- MQTT related functions --------------------------------------------------
     # The callback for when the client receives a CONNACK response from the server.
-
 
     def on_connect(self,client,userdata,flags,rc):
         if(rc != mqtt.MQTT_ERR_SUCCESS):
@@ -85,7 +84,6 @@ class Luminosity(MqttComm):
         do_every(self._frequence,publishSensors)
     # The callback for a received message from the server.
 
-
     def on_message(self,client, userdata, msg):
         ''' process incoming message.
             WARNING: threaded environment! '''
@@ -93,15 +91,6 @@ class Luminosity(MqttComm):
         log.debug("Received message '" + json.dumps(payload) + "' on topic '" + msg.topic + "' with QoS " + str(msg.qos))
         if(payload["dest"] == self._unitId):
             print("command reçu", payload['value'])
-
-        # First test: subscribe to your own publish topic
-        # ... then remove later
-        #log.debug("Temperature is %s deg. %s" % (payload['value'],payload['value_units']))
-
-        # TO BE CONTINUED
-        #log.warning("TODO: process incoming message!")
-
-
     # The callback to tell that the message has been sent (QoS0) or has gone
     # through all of the handshake (QoS1 and 2)
     def on_publish(client, userdata, mid):
