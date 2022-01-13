@@ -118,6 +118,7 @@ class Luminosity(MqttComm):
         jsonFrame['value'] = json.loads(lum)
         jsonFrame['value_units'] = 'lux'
         # ... and publish it!
+        print('LUX:'+lum)
         client.publish(MQTT_PUB, json.dumps(jsonFrame), MQTT_QOS)
 
     def lumiere(self):
