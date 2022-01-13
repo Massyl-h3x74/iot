@@ -19,7 +19,6 @@ MQTT_USER       = 'azerty'
 MQTT_PASSWD     = 'azerty'
 
 # input topics
-MQTT_TOPICS     =  ["1R1/014/shutter" ,"1R1/014/shutter/command" ]      # legacy stuff
 #MQTT_TOPICS     = [ "#" ]           # allowed to subscribe to all ... but carefull filters required ;)
 
 
@@ -30,7 +29,7 @@ class MqttComm(Thread):
     _connection     = None  # mqtt client
     _connected      = False
     _mqtt_user      = None
-    _mqtt_server      = None
+    _mqtt_server    = None
     _mqtt_port      = None
     _mqtt_passwd    = None
     _mqtt_topics    = None  # list of topics to subscribe to
@@ -73,7 +72,7 @@ class MqttComm(Thread):
         self._connection.connect(MQTT_SERVER,MQTT_PORT,MQTT_KEEP_ALIVE, MQTT_PASSWD, MQTT_USER)
         print("Connected to server %s on port %s" % (MQTT_SERVER, MQTT_PORT))
         counter = 0
-        # self._connection.subscribe(self._mqtt_topics)
+        #self._connection.subscribe(self._mqtt_topics)
         try:
             while not self._shutdownEvent.is_set() or counter == 100:
                 if self._connection.loop(timeout=2.0) != mqtt.MQTT_ERR_SUCCESS:

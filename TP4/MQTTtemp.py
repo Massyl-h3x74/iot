@@ -98,7 +98,7 @@ def on_connect(sekf,client, userdata, flags, rc):
         log.info("subscribing to topic: %s" % MQTT_SUB)
         # Subscribe to topic
         client.subscribe(MQTT_SUB);
-        do_every(self,publishSensors
+        do_every(self,publishSensors)
 
 
 

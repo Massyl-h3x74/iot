@@ -40,7 +40,7 @@ client      = None
 timer       = None
 log         = None
 __shutdown  = False
-MQTT_TOPICS     =  ["1R1/014/shutter" ,"1R1/014/shutter/command" ]
+MQTT_TOPICS     =  "1R1/014/lux"
 
 
 # #############################################################################
@@ -80,7 +80,7 @@ class Luminosity(MqttComm):
         if(rc != mqtt.MQTT_ERR_SUCCESS):
             print("connexion failed %s " %(mqtt.error_string(rc)))
         self._connected = True
-        self._connection.subscribe(MQTT_SUB)
+        self._connection.subscribe(MQTT_TOPICS)
         do_every(self._frequence,publishSensors)
     # The callback for a received message from the server.
 
