@@ -9,8 +9,6 @@ import syslog
 import sys
 
 import time
-from MQTTtemp import ctrlc_handler
-from TP4.MQTTtemp import do_every
 import smbus
 
 import time
@@ -32,30 +30,7 @@ if (os.path.exists(_path2add) and not os.path.abspath(_path2add) in sys.path):
 # Raspberry Pi related imports
 from rpi_utils import *
 '''
-from rpi_utils import getmac
-
-
-
-# #############################################################################
-#
-# Global Variables
-#
-MQTT_SERVER="192.168.0.210"
-MQTT_PORT=1883
-# Full MQTT_topic = MQTT_BASE + MQTT_TYPE
-MQTT_BASE_TOPIC = "1R1/014"
-MQTT_TYPE_TOPIC = "luminosity"
-MQTT_PUB = "/".join([MQTT_BASE_TOPIC, MQTT_TYPE_TOPIC])
-MQTT_COMMAND = "command"
-# First subscription to same topic (for tests)
-MQTT_SUB = "/".join([MQTT_BASE_TOPIC, MQTT_TYPE_TOPIC,MQTT_COMMAND])
-# ... then subscribe to <topic>/command to receive orders
-#MQTT_SUB = "/".join([MQTT_PUB, "command"])
-
-MQTT_QOS=0 # (default) no ACK from server
-#MQTT_QOS=1 # server will ack every message
-MQTT_USER="azerty"
-MQTT_PASSWD="azerty"
+from rpiutils import getmac
 
 # Measurement related
 # seconds between each measure.
