@@ -67,7 +67,7 @@ class MqttComm(Thread):
         counter = 0
         #self._connection.subscribe(self._mqtt_topics)
         try:
-            while not self._shutdownEvent.is_set() or counter == 100:
+            while counter == 100:
                 if self._connection.loop(timeout=2.0) != mqtt.MQTT_ERR_SUCCESS:
                     print("loop failed, sleeping a bit before retrying")
                     time.sleep(2)
