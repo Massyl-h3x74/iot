@@ -55,7 +55,7 @@ class MqttComm(Thread):
 
         # setup MQTT connection
         self._connection = mqtt.Client(self._unitID)
-        self._connection.username_pw_set(self._username, self._password)
+        self._connection.username_pw_set(self._mqtt_user, self._mqtt_passwd)
         self._connection.on_connect = self.on_connect
         self._connection.on_disconnect = self.on_disconnect
         self._connection.on_subscribe = self.on_subscribe
