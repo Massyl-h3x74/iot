@@ -42,10 +42,10 @@ class MqttComm(Thread):
         ''' Initialize object '''
         super().__init__()
         self._unitID = unitID
-        self._mqtt_user = MQTT_USER
-        self._mqtt_server = MQTT_SERVER
-        self._mqtt_port = MQTT_PORT
-        self._mqtt_passwd = MQTT_PASSWD
+        self._mqtt_user = "azerty"
+        self._mqtt_server = "192.168.0.210"
+        self._mqtt_port = 1883
+        self._mqtt_passwd = "azerty"
         self._mqtt_topics = mqtt_topics
         self._addons        = kwargs
 
