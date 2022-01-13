@@ -38,7 +38,7 @@ class MqttComm(Thread):
 
     _shutdownEvent = None
 
-    def __init__(self, unitID, mqtt_topics, shutdownEvent, *args, **kwargs ):
+    def __init__(self):
         ''' Initialize object '''
         super().__init__()
         self._unitID = unitID
