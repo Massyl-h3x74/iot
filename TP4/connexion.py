@@ -61,21 +61,6 @@ class MqttComm(Thread):
 
 
 
-    def run(self):
-        self._connection.connect(self._mqtt_server ,self._mqtt_port)
-        print("Connected to server %s on port %s" % (MQTT_SERVER, MQTT_PORT))
-        counter = 0
-        #self._connection.subscribe(self._mqtt_topics)
-        try:
-            while 1:
-                if self._connection.loop(timeout=2.0) != mqtt.MQTT_ERR_SUCCESS:
-                    print("loop failed, sleeping a bit before retrying")
-                    time.sleep(2)
-                #self._connection.publish("1R1","{ \"dest\":" + str( self._unitID) + " }")
-        except Exception as ex:
-            print("Exception : " + str(ex))
-        #self._connection.disconnect()
-
 
     def on_disconnect(self,client,userdata,rc):
         self._connected = False
