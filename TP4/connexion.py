@@ -41,7 +41,6 @@ class MqttComm(Thread):
     def __init__(self, unitID, mqtt_topics, shutdownEvent, *args, **kwargs ):
         ''' Initialize object '''
         super().__init__()
-
         self._unitID = unitID
         self._mqtt_user = MQTT_USER
         self._mqtt_server = MQTT_SERVER
@@ -55,7 +54,8 @@ class MqttComm(Thread):
             #self._shutdownEvent = Event()
 
         # setup MQTT connection
-        self._connection = mqtt.Client(unitID)
+        self._connection = mqtt.Client(self._unitID)
+        self._connection.username_pw_set(self._username, self._password)
         self._connection.on_connect = self.on_connect
         self._connection.on_disconnect = self.on_disconnect
         self._connection.on_subscribe = self.on_subscribe
@@ -69,7 +69,7 @@ class MqttComm(Thread):
 
 
     def run(self):
-        self._connection.connect(MQTT_SERVER,MQTT_PORT,MQTT_KEEP_ALIVE, MQTT_PASSWD, MQTT_USER)
+        self._connection.connect(self._mqtt_server,self._mqtt_port)
         print("Connected to server %s on port %s" % (MQTT_SERVER, MQTT_PORT))
         counter = 0
         #self._connection.subscribe(self._mqtt_topics)
