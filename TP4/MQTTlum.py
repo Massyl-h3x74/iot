@@ -51,7 +51,6 @@ MQTT_TOPICS     =  "1R1/014/lux"
 class Luminosity(MqttComm):
     def __init__(self):
         super().__init__()
-        threading.Thread.__init__(self)
         self._frequence = measure_interleave
         self._unitId = str(getmac())
         self._lux = 0
