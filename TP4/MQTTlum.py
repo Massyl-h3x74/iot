@@ -79,7 +79,8 @@ class Luminosity(MqttComm):
             print("Exception : " + str(ex))
         #self._connection.disconnect()
     # threading.timer helper function
-    def do_every (interval, worker_func, iterations = 0):
+
+    def do_every (self,interval, worker_func, iterations = 0):
         global timer
         # launch new timer
         if ( iterations != 1):
